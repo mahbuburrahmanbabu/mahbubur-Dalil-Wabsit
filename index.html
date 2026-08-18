@@ -1,367 +1,162 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta name="description" content="মোঃ মাহবুবুর রহমান বাবু — দলিল লেখক ও স্ট্যাম্প ভেন্ডার। ডামুড্যা সাব-রেজিস্ট্রার অফিস প্রাঙ্গণ, শরীয়তপুর। দলিল লেখা, বায়না দলিল, দানপত্র দলিলসহ বিভিন্ন দলিল সংক্রান্ত সেবা।">
-<meta name="author" content="মোঃ মাহবুবুর রহমান বাবু">
-<meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="google-site-verification" content="YFSfrAX6sfDGB2UlOolF3B4jzBB9JgpJBKiGll7kFxU" />
-
-<title>মোঃ মাহবুবুর রহমান বাবু | দলিল লেখক ও স্ট্যাম্প ভেন্ডার | শরীয়তপুর</title>
-
-<meta name="description" content="মোঃ মাহবুবুর রহমান বাবু - দলিল লেখক ও স্ট্যাম্প ভেন্ডার। সাব-কবলা, হেবা, বণ্টননামা, অসিয়তনামা, নামজারি, নন-জুডিশিয়াল স্ট্যাম্প বিক্রয়সহ সকল প্রকার দলিল সেবা।">
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
+<title>অফিস হিসাব | মাহবুবুর রহমান</title>
 
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Noto Sans Bengali',sans-serif;
+    box-sizing:border-box;
 }
 
 body{
-background:#f5f7fa;
-color:#333;
-line-height:1.8;
+    margin:0;
+    font-family:Arial, "Noto Sans Bengali", sans-serif;
+    background:#f1f5f9;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-header{
-background:linear-gradient(135deg,#006400,#00a651);
-color:#fff;
-padding:40px 20px;
-text-align:center;
+.login-box{
+    width:90%;
+    max-width:420px;
+    background:white;
+    padding:35px 25px;
+    border-radius:18px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.15);
+    text-align:center;
 }
 
-header img{
-width:180px;
-height:180px;
-border-radius:50%;
-border:5px solid #fff;
-object-fit:cover;
+.logo{
+    font-size:50px;
+    margin-bottom:10px;
 }
 
-header h1{
-margin-top:15px;
-font-size:36px;
+h1{
+    margin:5px 0;
+    font-size:26px;
+    color:#1e293b;
 }
 
-header p{
-font-size:18px;
-margin-top:8px;
+.subtitle{
+    color:#64748b;
+    margin-bottom:25px;
 }
 
-.notice{
-background:#fff3cd;
-padding:12px;
-font-weight:bold;
-text-align:center;
-color:#b30000;
+label{
+    display:block;
+    text-align:left;
+    margin:12px 0 6px;
+    font-weight:bold;
+    color:#334155;
 }
 
-nav{
-background:#005b2e;
-padding:15px;
-text-align:center;
+input{
+    width:100%;
+    padding:13px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    font-size:16px;
 }
 
-nav a{
-color:#fff;
-text-decoration:none;
-margin:0 12px;
-font-weight:bold;
+input:focus{
+    outline:none;
+    border-color:#2563eb;
 }
 
-.container{
-width:90%;
-max-width:1100px;
-margin:auto;
+button{
+    width:100%;
+    padding:14px;
+    margin-top:22px;
+    border:0;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
 }
 
-section{
-background:#fff;
-margin:25px 0;
-padding:30px;
-border-radius:12px;
-box-shadow:0 3px 12px rgba(0,0,0,.1);
+button:hover{
+    background:#1d4ed8;
 }
 
-h2{
-text-align:center;
-color:#006400;
-margin-bottom:20px;
+#error{
+    color:#dc2626;
+    margin-top:15px;
+    display:none;
 }
 
-.service{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:20px;
+.footer{
+    margin-top:25px;
+    font-size:13px;
+    color:#94a3b8;
 }
-
-.card{
-background:#f0fff0;
-padding:20px;
-border-radius:10px;
-text-align:center;
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-background:#e5ffe5;
-}
-
-.btn{
-display:inline-block;
-padding:12px 25px;
-background:#006400;
-color:#fff;
-text-decoration:none;
-border-radius:8px;
-margin:8px;
-font-weight:bold;
-}
-
-footer{
-background:#006400;
-color:#fff;
-padding:20px;
-text-align:center;
-margin-top:30px;
-}
-
 </style>
-
 </head>
 
 <body>
 
-<header>
+<div class="login-box">
 
-<img src="mahabub.jpg" alt="মোঃ মাহবুবুর রহমান বাবু">
+    <div class="logo">🔐</div>
 
-<h1>মোঃ মাহবুবুর রহমান বাবু</h1>
+    <h1>অফিস হিসাব সিস্টেম</h1>
 
-<p>দলিল লেখক ও স্ট্যাম্প ভেন্ডার</p>
+    <div class="subtitle">
+        মাহবুবুর রহমান<br>
+        দলিল লেখক ও স্ট্যাম্প ভেন্ডার
+    </div>
 
-<p>ডামুড্যা সাব-রেজিস্ট্রার অফিস, শরীয়তপুর</p>
+    <label for="username">ইউজার নাম</label>
+    <input type="text" id="username" placeholder="ইউজার নাম লিখুন">
 
-</header>
+    <label for="password">পাসওয়ার্ড</label>
+    <input type="password" id="password" placeholder="পাসওয়ার্ড লিখুন">
 
-<div class="notice">
+    <button onclick="login()">লগইন করুন</button>
 
-<marquee>
+    <div id="error">
+        ইউজার নাম অথবা পাসওয়ার্ড ভুল!
+    </div>
 
-📢 সকল প্রকার দলিল লেখা, সাব-কবলা, হেবা, বণ্টননামা, অসিয়তনামা, নামজারি, নন-জুডিশিয়াল স্ট্যাম্প বিক্রয়সহ সকল সেবা প্রদান করা হয়।
-
-</marquee>
-
-</div>
-
-<nav>
-
-<a href="#about">আমার সম্পর্কে</a>
-
-<a href="#service">সেবাসমূহ</a>
-
-<a href="#contact">যোগাযোগ</a>
-
-</nav>
-
-<div class="container"><section id="about">
-
-<h2>আমার সম্পর্কে</h2>
-
-<p>
-আমি <b>মোঃ মাহবুবুর রহমান বাবু</b>। দীর্ঘদিন ধরে সততা, দক্ষতা ও বিশ্বস্ততার সাথে
-দলিল লেখা, স্ট্যাম্প বিক্রয় এবং জমি সংক্রান্ত বিভিন্ন আইনি কাগজপত্র প্রস্তুতের
-সেবা দিয়ে আসছি। আমার লক্ষ্য হলো সঠিক পরামর্শ ও নির্ভুল সেবা প্রদান করে
-গ্রাহকের আস্থা অর্জন করা।
-</p>
-
-</section>
-
-<section id="service">
-
-<h2>আমাদের সেবাসমূহ</h2>
-
-<div class="service">
-
-<div class="card">
-<h3>📝 সাব-কবলা দলিল</h3>
-<p>সকল প্রকার সাব-কবলা দলিল প্রস্তুত করা হয়।</p>
-</div>
-
-<div class="card">
-<h3>🎁 হেবা দলিল</h3>
-<p>হেবা ও দান সংক্রান্ত দলিল প্রস্তুত করা হয়।</p>
-</div>
-
-<div class="card">
-<h3>👨‍👩‍👧‍👦 বণ্টননামা দলিল</h3>
-<p>ওয়ারিশ ও সম্পত্তি বণ্টনের দলিল।</p>
-</div>
-
-<div class="card">
-<h3>📜 অসিয়তনামা দলিল</h3>
-<p>অসিয়তনামা দলিল প্রস্তুত করা হয়।</p>
-</div>
-
-<div class="card">
-<h3>🤝 চুক্তিপত্র</h3>
-<p>বিভিন্ন প্রকার চুক্তিপত্র তৈরি করা হয়।</p>
-</div>
-
-<div class="card">
-<h3>📋 নামজারির আবেদন</h3>
-<p>নামজারি আবেদনে সহযোগিতা করা হয়।</p>
-</div>
-
-<div class="card">
-<h3>📄 বায়না দলিল</h3>
-<p>জমি ক্রয়-বিক্রয়ের বায়না দলিল।</p>
-</div>
-
-<div class="card">
-<h3>🏷️ নন-জুডিশিয়াল স্ট্যাম্প</h3>
-<p>নন-জুডিশিয়াল স্ট্যাম্প বিক্রয় করা হয়।</p>
-</div>
-
-<div class="card">
-<h3>⚖️ জমি সংক্রান্ত পরামর্শ</h3>
-<p>জমি সংক্রান্ত বিভিন্ন বিষয়ে পরামর্শ প্রদান করা হয়।</p>
-</div>
-
-<div class="card">
-<h3>📑 অন্যান্য সেবা</h3>
-<p>সকল প্রকার দলিল লেখা ও সংশ্লিষ্ট সেবা প্রদান করা হয়।</p>
-</div>
+    <div class="footer">
+        ব্যক্তিগত অফিস ব্যবহারের জন্য
+    </div>
 
 </div>
 
-</section><section id="contact">
+<script>
 
-<h2>যোগাযোগ</h2>
+function login(){
 
-<p><b>📞 মোবাইল:</b> 01920-832621</p>
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const error = document.getElementById("error");
 
-<p><b>📞 মোবাইল:</b> 01710-292724</p>
+    /*let username = document.getElementById("username").value;
+let password = document.getElementById("password").value;
+let error = document.getElementById("error");
 
-<p><b>☎️ হটলাইন (২৪ ঘণ্টা):</b> 01921-539677</p>
+    if(username === "admin" && password === "1234"){
 
-<p><b>📧 ই-মেইল:</b> dvmahabubur2025@gmail.com</p>
+        error.style.display = "none";
 
-<p><b>🏢 ১ম চেম্বার:</b><br>
-ডামুড্যা সাব-রেজিস্ট্রার অফিস প্রাঙ্গণ, মসজিদ সংলগ্ন, শরীয়তপুর।
-</p>
+        alert("লগইন সফল হয়েছে!");
 
-<p><b>🏢 ২য় চেম্বার:</b><br>
-দারুল আমান দক্ষিণ বাজার (মুন্সীর টেক)।
-</p>
+        // পরের ধাপে এখানে Dashboard খুলবে
 
-<p><b>🌍 সেবা এলাকা:</b><br>
-✅ শরীয়তপুর জেলায় সব সময় সেবা প্রদান করা হয়।<br>
-✅ সারা বাংলাদেশে আলোচনা সাপেক্ষে সেবা প্রদান করা হয়।
-</p>
+    }else{
 
-<a class="btn" href="tel:01921539677">📞 হটলাইনে কল করুন</a>
+        error.style.display = "block";
 
-<a class="btn" href="tel:01920832621">📱 মোবাইল-১</a>
+    }
+}
 
-<a class="btn" href="tel:01710292724">📱 মোবাইল-২</a>
-
-<a class="btn" href="mailto:dvmahabubur2025@gmail.com">📧 ই-মেইল করুন</a>
-
-<a class="btn" href="https://www.facebook.com/profile.php?id=61578245968835" target="_blank">📘 Facebook</a>
-
-</section><section>
-
-<<h2>Google Map</h2>
-
-<iframe
-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d938452.4582298166!2d90.15651685357824!3d23.24927560004604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37551144fafadd4d%3A0x7e80a50bff265d39!2sSub%20Registrar%20Office%20Damudya!5e0!3m2!1sen!2sbd!4v1786040186396!5m2!1sen!2sbd"
-width="100%"
-height="350"
-style="border:0;border-radius:10px;"
-allowfullscreen=""
-loading="lazy"
-referrerpolicy="strict-origin-when-cross-origin">
-</iframe>
-
-<a class="btn"
-href="https://maps.google.com/?q=Damudya+Sub+Registrar+Office+Shariatpur"
-target="_blank">
-📍 Google Map দেখুন
-</a>
-
-</section>
-
-</div>
-
-<footer>
-
-<h3>মোঃ মাহবুবুর রহমান বাবু</h3>
-
-<p>দলিল লেখক ও স্ট্যাম্প ভেন্ডার</p>
-
-<p>ডামুড্যা সাব-রেজিস্ট্রার অফিস, শরীয়তপুর</p>
-
-<p>☎️ হটলাইন: 01921-539677</p>
-
-<p>© ২০২৬ সর্বস্বত্ব সংরক্ষিত</p>
-
-</footer>
+</script>
 
 </body>
-</html><!-- WhatsApp Floating Button -->
-<a href="https://wa.me/8801920832621" class="whatsapp" target="_blank">
-💬
-</a>
-
-<style>
-
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-width:60px;
-height:60px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-text-decoration:none;
-box-shadow:0 4px 10px rgba(0,0,0,.3);
-z-index:999;
-}
-
-.whatsapp:hover{
-background:#1ebc57;
-}
-
-</style><hr style="margin:30px 0;">
-
-<section>
-
-<h2>কেন আমাদের সেবা নিবেন?</h2>
-
-<ul style="line-height:2;">
-<li>✅ দীর্ঘদিনের অভিজ্ঞতা</li>
-<li>✅ সততা ও বিশ্বস্ততার সাথে সেবা</li>
-<li>✅ দ্রুত ও নির্ভুল দলিল প্রস্তুত</li>
-<li>✅ ন্যায্য সার্ভিস চার্জ</li>
-<li>✅ শরীয়তপুর জেলায় সব সময় সেবা</li>
-<li>✅ সারা বাংলাদেশে আলোচনা সাপেক্ষে সেবা</li>
-</ul>
-
-</section><hr style="margin:30px 0;">
-
-<section>
-
+</html>
