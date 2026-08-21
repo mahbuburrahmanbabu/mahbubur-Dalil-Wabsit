@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>স্ট্যাম্প ক্রয়</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f6f8;
+    padding:20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+
+h1{
+    text-align:center;
+    background:#111827;
+    color:white;
+    padding:15px;
+    border-radius:8px;
+}
+
+h2{
+    margin-top:25px;
+    color:#1d4ed8;
+}
+
+.info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+label{
+    font-weight:bold;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin-top:6px;
+    box-sizing:border-box;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#e5e7eb;
+}
+
+.total-box{
+    margin-top:20px;
+    background:#e0f2fe;
+    padding:15px;
+    border-radius:8px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+button{
+    padding:12px 20px;
+    margin-top:20px;
+    border:0;
+    border-radius:7px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.back{
+    background:#6b7280;
+    margin-left:10px;
+}
+
+@media(max-width:700px){
+    .info{
+        grid-template-columns:1fr;
+    }
+
+    table{
+        font-size:13px;
+    }
+
+    th,td{
+        padding:6px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>স্ট্যাম্প ক্রয় হিসাব</h1>
+
+<div class="info">
+
+<div>
+<label>ক্রয়ের তারিখ</label>
+<input type="date" id="date">
+</div>
+
+<div>
+<label>ট্রেজারি চালান / রসিদ নম্বর</label>
+<input type="text" id="challan" placeholder="চালান নম্বর লিখুন">
+</div>
+
+</div>
+
+<h2>ট্রেজারি থেকে ক্রয় করা স্ট্যাম্প</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>স্ট্যাম্পের মূল্য</th>
+<th>কতটি ক্রয়</th>
+<th>মোট মূল্য</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>১০০ টাকা</td>
+<td>
+<input type="number" min="0" value="0" id="s100" oninput="calculate()">
+</td>
+<td id="t100">০ টাকা</td>
+</tr>
+
+<tr>
+<td>৫০ টাকা</td>
+<td>
+<input type="number" min="0" value="0" id="s50" oninput="calculate()">
+</td>
+<td id="t50">০ টাকা</td>
+</tr>
+
+<tr>
+<td>২৫ টাকা</td>
+<td>
+<input type="number" min="0" value="0" id="s25" oninput="calculate()">
+</td>
+<td id="t25">০ টাকা</td>
+</tr>
+
+<tr>
+<td>২০ টাকা</td>
+<td>
+<input type="number" min="0" value="0" id="s20" oninput="calculate()">
+</td>
+<td id="t20">০ টাকা</td>
+</tr>
+
+<tr>
+<td>১০ টাকা</td>
+<td>
+<input type="number" min="0" value="0" id="s10" oninput="calculate()">
+</td>
+<td id="t10">০ টাকা</td>
+</tr>
+
+<tr>
+<td>৫ টাকা</td>
+<td>
+<input type="number" min="0" value="0" id="s5" oninput="calculate()">
+</td>
+<td id="t5">০ টাকা</td>
+</tr>
+
+</tbody>
+</table>
+
+<div class="total-box">
+মোট স্ট্যাম্পের মূল্য: <span id="grandTotal">০</span> টাকা
+</div>
+
+<button onclick="savePurchase()">ক্রয়ের হিসাব সংরক্ষণ করুন</button>
+
+<button class="back" onclick="history.back()">পিছনে যান</button>
+
+<h2>এই ক্রয়ের তথ্য</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>তারিখ</th>
+<th>চালান নম্বর</th>
+<th>মোট স্ট্যাম্প</th>
+<th>মোট টাকা</th>
+</tr>
+</thead>
+
+<tbody id="purchaseList">
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+document.getElementById("date").value =
+new Date().toISOString().split("T")[0];
+
+function getValue(id){
+    return Number(document.getElementById(id).value) || 0;
+}
+
+function calculate(){
+
+    let s100 = getValue("s100");
+    let s50  = getValue("s50");
+    let s25  = getValue("s25");
+    let s20  = getValue("s20");
+    let s10  = getValue("s10");
+    let s5   = getValue("s5");
+
+    let t100 = s100 * 100;
+    let t50  = s50 * 50;
+    let t25  = s25 * 25;
+    let t20  = s20 * 20;
+    let t10  = s10 * 10;
+    let t5   = s5 * 5;
+
+    document.getElementById("t100").innerText = t100 + " টাকা";
+    document.getElementById("t50").innerText = t50 + " টাকা";
+    document.getElementById("t25").innerText = t25 + " টাকা";
+    document.getElementById("t20").innerText = t20 + " টাকা";
+    document.getElementById("t10").innerText = t10 + " টাকা";
+    document.getElementById("t5").innerText = t5 + " টাকা";
+
+    let total =
+        t100 + t50 + t25 + t20 + t10 + t5;
+
+    document.getElementById("grandTotal").innerText = total;
+}
+
+function savePurchase(){
+
+    let date = document.getElementById("date").value;
+    let challan = document.getElementById("challan").value;
+
+    let purchase = {
+        date: date,
+        challan: challan,
+        s100: getValue("s100"),
+        s50: getValue("s50"),
+        s25: getValue("s25"),
+        s20: getValue("s20"),
+        s10: getValue("s10"),
+        s5: getValue("s5")
+    };
+
+    let purchases =
+        JSON.parse(localStorage.getItem("stampPurchases")) || [];
+
+    purchases.push(purchase);
+
+    localStorage.setItem(
+        "stampPurchases",
+        JSON.stringify(purchases)
+    );
+
+    alert("স্ট্যাম্প ক্রয়ের হিসাব সংরক্ষণ হয়েছে।");
+
+    showPurchases();
+}
+
+function showPurchases(){
+
+    let purchases =
+        JSON.parse(localStorage.getItem("stampPurchases")) || [];
+
+    let list = document.getElementById("purchaseList");
+
+    list.innerHTML = "";
+
+    purchases.forEach(function(p){
+
+        let total =
+            p.s100 * 100 +
+            p.s50 * 50 +
+            p.s25 * 25 +
+            p.s20 * 20 +
+            p.s10 * 10 +
+            p.s5 * 5;
+
+        let totalStamp =
+            p.s100 +
+            p.s50 +
+            p.s25 +
+            p.s20 +
+            p.s10 +
+            p.s5;
+
+        list.innerHTML += `
+        <tr>
+            <td>${p.date}</td>
+            <td>${p.challan || "-"}</td>
+            <td>${totalStamp} টি</td>
+            <td>${total} টাকা</td>
+        </tr>
+        `;
+    });
+}
+
+showPurchases();
+calculate();
+
+</script>
+
+</body>
+</html>
