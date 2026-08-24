@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>স্ট্যাম্প বিক্রয়</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    margin:20px;
+}
+
+h2{
+    text-align:center;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:5px 0 10px;
+}
+
+button{
+    padding:10px 20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table,th,td{
+    border:1px solid #ccc;
+}
+
+th,td{
+    padding:8px;
+    text-align:center;
+}
+</style>
+</head>
+<body>
+
+<h2>স্ট্যাম্প বিক্রয় এন্ট্রি</h2>
+
+<label>তারিখ</label>
+<input type="date" id="date">
+
+<label>ক্রেতার নাম</label>
+<input type="text" id="buyer">
+
+<label>স্ট্যাম্প মূল্য</label>
+<input type="number" id="price">
+
+<label>পরিমাণ</label>
+<input type="number" id="qty">
+
+<button onclick="saveData()">সংরক্ষণ করুন</button>
+
+<table>
+<thead>
+<tr>
+<th>তারিখ</th>
+<th>ক্রেতা</th>
+<th>মূল্য</th>
+<th>পরিমাণ</th>
+</tr>
+</thead>
+
+<tbody id="list">
+</tbody>
+</table>
+
+<script>
+function saveData(){
+
+let date=document.getElementById("date").value;
+let buyer=document.getElementById("buyer").value;
+let price=document.getElementById("price").value;
+let qty=document.getElementById("qty").value;
+
+let row=`
+<tr>
+<td>${date}</td>
+<td>${buyer}</td>
+<td>${price}</td>
+<td>${qty}</td>
+</tr>
+`;
+
+document.getElementById("list").innerHTML+=row;
+}
+</script>
+
+</body>
+</html>
