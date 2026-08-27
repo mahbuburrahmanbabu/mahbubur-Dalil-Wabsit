@@ -157,26 +157,18 @@ let error = document.getElementById("error");
 }
 
 <script>
-
-function login(){
-
-    const username = document.getElementById("username").value;
+function login() {
+    const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value;
     const error = document.getElementById("error");
 
-    if(username === "admin" && password === "1234"){
-
+    if (username === "admin" && password === "1234") {
         error.style.display = "none";
-
         alert("লগইন সফল হয়েছে!");
-
-    }else{
-
+    } else {
         error.style.display = "block";
-
     }
 }
-
 </script>
 </body>
 </html>
