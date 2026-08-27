@@ -156,7 +156,25 @@ let error = document.getElementById("error");
     }
 }
 
-</script>
+<script>
 
-</body>
-</html>
+function login(){
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const error = document.getElementById("error");
+
+    if(username === "admin" && password === "1234"){
+
+        error.style.display = "none";
+
+        alert("লগইন সফল হয়েছে!");
+
+    }else{
+
+        error.style.display = "block";
+
+    }
+}
+
+</script>
