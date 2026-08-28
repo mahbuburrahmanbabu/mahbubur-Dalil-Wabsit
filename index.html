@@ -7,93 +7,95 @@
 <title>অফিস হিসাব | মাহবুবুর রহমান</title>
 
 <style>
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-body{
-    margin:0;
-    font-family:Arial, "Noto Sans Bengali", sans-serif;
-    background:#f1f5f9;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+body {
+    margin: 0;
+    font-family: Arial, "Noto Sans Bengali", sans-serif;
+    background: #f1f5f9;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.login-box{
-    width:90%;
-    max-width:420px;
-    background:white;
-    padding:35px 25px;
-    border-radius:18px;
-    box-shadow:0 8px 30px rgba(0,0,0,0.15);
-    text-align:center;
+.login-box {
+    width: 90%;
+    max-width: 420px;
+    background: white;
+    padding: 35px 25px;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    text-align: center;
 }
 
-.logo{
-    font-size:50px;
-    margin-bottom:10px;
+.logo {
+    font-size: 50px;
+    margin-bottom: 10px;
 }
 
-h1{
-    margin:5px 0;
-    font-size:26px;
-    color:#1e293b;
+h1 {
+    margin: 5px 0;
+    font-size: 26px;
+    color: #1e293b;
 }
 
-.subtitle{
-    color:#64748b;
-    margin-bottom:25px;
+.subtitle {
+    color: #64748b;
+    margin-bottom: 25px;
 }
 
-label{
-    display:block;
-    text-align:left;
-    margin:12px 0 6px;
-    font-weight:bold;
-    color:#334155;
+label {
+    display: block;
+    text-align: left;
+    margin: 12px 0 6px;
+    font-weight: bold;
+    color: #334155;
 }
 
-input{
-    width:100%;
-    padding:13px;
-    border:1px solid #cbd5e1;
-    border-radius:10px;
-    font-size:16px;
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 16px;
 }
 
-input:focus{
-    outline:none;
-    border-color:#2563eb;
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 22px;
+    border: 0;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
 }
 
-button{
-    width:100%;
-    padding:14px;
-    margin-top:22px;
-    border:0;
-    border-radius:10px;
-    background:#2563eb;
-    color:white;
-    font-size:17px;
-    cursor:pointer;
+button:hover {
+    background: #1d4ed8;
 }
 
-button:hover{
-    background:#1d4ed8;
+#error {
+    color: #dc2626;
+    margin-top: 15px;
+    display: none;
 }
 
-#error{
-    color:#dc2626;
-    margin-top:15px;
-    display:none;
+#success {
+    color: #16a34a;
+    margin-top: 15px;
+    display: none;
+    font-weight: bold;
 }
 
-.footer{
-    margin-top:25px;
-    font-size:13px;
-    color:#94a3b8;
+.footer {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #94a3b8;
 }
 </style>
 </head>
@@ -123,6 +125,10 @@ button:hover{
         ইউজার নাম অথবা পাসওয়ার্ড ভুল!
     </div>
 
+    <div id="success">
+        লগইন সফল হয়েছে!
+    </div>
+
     <div class="footer">
         ব্যক্তিগত অফিস ব্যবহারের জন্য
     </div>
@@ -130,45 +136,29 @@ button:hover{
 </div>
 
 <script>
-
-function login(){
-
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-    const error = document.getElementById("error");
-
-    /*let username = document.getElementById("username").value;
-let password = document.getElementById("password").value;
-let error = document.getElementById("error");
-
-    if(username === "admin" && password === "1234"){
-
-        error.style.display = "none";
-
-        alert("লগইন সফল হয়েছে!");
-
-        // পরের ধাপে এখানে Dashboard খুলবে
-
-    }else{
-
-        error.style.display = "block";
-
-    }
-}
-
-<script>
 function login() {
+
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value;
+
     const error = document.getElementById("error");
+    const success = document.getElementById("success");
 
     if (username === "admin" && password === "1234") {
+
         error.style.display = "none";
+        success.style.display = "block";
+
         alert("লগইন সফল হয়েছে!");
+
     } else {
+
+        success.style.display = "none";
         error.style.display = "block";
+
     }
 }
 </script>
+
 </body>
 </html>
