@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>অফিস ড্যাশবোর্ড | মাহবুবুর রহমান</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, "Noto Sans Bengali", sans-serif;
+    background:#f1f5f9;
+    color:#1e293b;
+}
+
+header{
+    background:#2563eb;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+header h1{
+    margin:0;
+    font-size:26px;
+}
+
+header p{
+    margin:6px 0 0;
+}
+
+.container{
+    width:95%;
+    max-width:1100px;
+    margin:25px auto;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.card h3{
+    margin-top:0;
+    color:#475569;
+}
+
+.number{
+    font-size:28px;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+.section{
+    background:white;
+    margin-top:20px;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.section h2{
+    margin-top:0;
+    color:#1e40af;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;
+}
+
+label{
+    font-weight:bold;
+    display:block;
+    margin-bottom:5px;
+}
+
+input,select{
+    width:100%;
+    padding:11px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    font-size:15px;
+}
+
+button{
+    margin-top:15px;
+    padding:12px 20px;
+    border:0;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.logout{
+    background:#dc2626;
+}
+
+.logout:hover{
+    background:#b91c1c;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th,td{
+    border:1px solid #cbd5e1;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#e2e8f0;
+}
+
+@media(max-width:600px){
+    header h1{
+        font-size:21px;
+    }
+
+    table{
+        font-size:13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>অফিস হিসাব সিস্টেম</h1>
+    <p>মাহবুবুর রহমান | দলিল লেখক ও স্ট্যাম্প ভেন্ডার</p>
+</header>
+
+<div class="container">
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>মোট স্ট্যাম্প মজুদ</h3>
+            <div class="number" id="totalStock">0</div>
+        </div>
+
+        <div class="card">
+            <h3>মোট বিক্রয়</h3>
+            <div class="number" id="totalSale">৳ 0</div>
+        </div>
+
+        <div class="card">
+            <h3>মোট ক্রয়</h3>
+            <div class="number" id="totalPurchase">৳ 0</div>
+        </div>
+
+        <div class="card">
+            <h3>মোট লাভ</h3>
+            <div class="number" id="totalProfit">৳ 0</div>
+        </div>
+
+    </div>
+
+
+    <div class="section">
+
+        <h2>স্ট্যাম্প ক্রয়</h2>
+
+        <div class="form-grid">
+
+            <div>
+                <label>স্ট্যাম্পের মূল্য</label>
+                <select id="purchaseDenomination">
+                    <option value="5">৫ টাকা</option>
+                    <option value="10">১০ টাকা</option>
+                    <option value="20">২০ টাকা</option>
+                    <option value="25">২৫ টাকা</option>
+                    <option value="50">৫০ টাকা</option>
+                    <option value="100">১০০ টাকা</option>
+                </select>
+            </div>
+
+            <div>
+                <label>পরিমাণ</label>
+                <input type="number" id="purchaseQty" min="1">
+            </div>
+
+            <div>
+                <label>ক্রয় মূল্য</label>
+                <input type="number" id="purchasePrice" min="0">
+            </div>
+
+        </div>
+
+        <button onclick="addPurchase()">ক্রয় যোগ করুন</button>
+
+    </div>
+
+
+    <div class="section">
+
+        <h2>স্ট্যাম্প বিক্রয়</h2>
+
+        <div class="form-grid">
+
+            <div>
+                <label>স্ট্যাম্পের মূল্য</label>
+                <select id="saleDenomination">
+                    <option value="5">৫ টাকা</option>
+                    <option value="10">১০ টাকা</option>
+                    <option value="20">২০ টাকা</option>
+                    <option value="25">২৫ টাকা</option>
+                    <option value="50">৫০ টাকা</option>
+                    <option value="100">১০০ টাকা</option>
+                </select>
+            </div>
+
+            <div>
+                <label>পরিমাণ</label>
+                <input type="number" id="saleQty" min="1">
+            </div>
+
+            <div>
+                <label>বিক্রয় মূল্য</label>
+                <input type="number" id="salePrice" min="0">
+            </div>
+
+        </div>
+
+        <button onclick="addSale()">বিক্রয় যোগ করুন</button>
+
+    </div>
+
+
+    <div class="section">
+
+        <h2>লেনদেনের হিসাব</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>তারিখ</th>
+                    <th>ধরন</th>
+                    <th>মূল্য</th>
+                    <th>পরিমাণ</th>
+                    <th>টাকা</th>
+                </tr>
+            </thead>
+
+            <tbody id="transactionTable"></tbody>
+
+        </table>
+
+    </div>
+
+
+    <div class="section">
+
+        <h2>অন্যান্য অফিস সেবা</h2>
+
+        <div class="form-grid">
+
+            <button onclick="alert('দলিল লেখার হিসাব পরবর্তী ধাপে যোগ করা হবে')">
+                দলিল লেখা
+            </button>
+
+            <button onclick="alert('নকল উত্তোলনের হিসাব পরবর্তী ধাপে যোগ করা হবে')">
+                নকল উত্তোলন
+            </button>
+
+            <button onclick="alert('ডেলিভারি হিসাব পরবর্তী ধাপে যোগ করা হবে')">
+                ডেলিভারি
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="section">
+
+        <button class="logout" onclick="logout()">লগআউট</button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let purchases = JSON.parse(localStorage.getItem("purchases")) || [];
+let sales = JSON.parse(localStorage.getItem("sales")) || [];
+
+
+function addPurchase(){
+
+    const denomination =
+        Number(document.getElementById("purchaseDenomination").value);
+
+    const qty =
+        Number(document.getElementById("purchaseQty").value);
+
+    const price =
+        Number(document.getElementById("purchasePrice").value);
+
+    if(qty <= 0 || price < 0){
+
+        alert("সঠিক তথ্য দিন");
+        return;
+
+    }
+
+    purchases.push({
+        date:new Date().toLocaleDateString("bn-BD"),
+        denomination:denomination,
+        qty:qty,
+        price:price
+    });
+
+    localStorage.setItem("purchases",JSON.stringify(purchases));
+
+    document.getElementById("purchaseQty").value="";
+    document.getElementById("purchasePrice").value="";
+
+    updateDashboard();
+
+    alert("ক্রয়ের হিসাব যোগ হয়েছে");
+
+}
+
+
+function addSale(){
+
+    const denomination =
+        Number(document.getElementById("saleDenomination").value);
+
+    const qty =
+        Number(document.getElementById("saleQty").value);
+
+    const price =
+        Number(document.getElementById("salePrice").value);
+
+    if(qty <= 0 || price < 0){
+
+        alert("সঠিক তথ্য দিন");
+        return;
+
+    }
+
+    sales.push({
+        date:new Date().toLocaleDateString("bn-BD"),
+        denomination:denomination,
+        qty:qty,
+        price:price
+    });
+
+    localStorage.setItem("sales",JSON.stringify(sales));
+
+    document.getElementById("saleQty").value="";
+    document.getElementById("salePrice").value="";
+
+    updateDashboard();
+
+    alert("বিক্রয়ের হিসাব যোগ হয়েছে");
+
+}
+
+
+function updateDashboard(){
+
+    let stock=0;
+    let purchaseTotal=0;
+    let saleTotal=0;
+
+    purchases.forEach(item => {
+
+        stock += item.qty;
+        purchaseTotal += item.price;
+
+    });
+
+    sales.forEach(item => {
+
+        stock -= item.qty;
+        saleTotal += item.price;
+
+    });
+
+    let profit = saleTotal - purchaseTotal;
+
+    document.getElementById("totalStock").innerText = stock;
+
+    document.getElementById("totalPurchase").innerText =
+        "৳ " + purchaseTotal;
+
+    document.getElementById("totalSale").innerText =
+        "৳ " + saleTotal;
+
+    document.getElementById("totalProfit").innerText =
+        "৳ " + profit;
+
+
+    const table =
+        document.getElementById("transactionTable");
+
+    table.innerHTML="";
+
+
+    purchases.forEach(item => {
+
+        table.innerHTML += `
+        <tr>
+            <td>${item.date}</td>
+            <td>ক্রয়</td>
+            <td>${item.denomination} টাকা</td>
+            <td>${item.qty}</td>
+            <td>৳ ${item.price}</td>
+        </tr>
+        `;
+
+    });
+
+
+    sales.forEach(item => {
+
+        table.innerHTML += `
+        <tr>
+            <td>${item.date}</td>
+            <td>বিক্রয়</td>
+            <td>${item.denomination} টাকা</td>
+            <td>${item.qty}</td>
+            <td>৳ ${item.price}</td>
+        </tr>
+        `;
+
+    });
+
+}
+
+
+function logout(){
+
+    window.location.href="index.html";
+
+}
+
+
+updateDashboard();
+
+</script>
+
+</body>
+</html>
